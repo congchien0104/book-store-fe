@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { BooksRoutingModule } from './books-routing.module';
+import { BookListComponent } from './book-list/book-list.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { BookItemComponent } from './book-item/book-item.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    SharedModule,
+    BooksRoutingModule
+  ],
+  declarations: [BookListComponent, BookItemComponent, BookDetailsComponent]
+})
+export class BooksModule { }

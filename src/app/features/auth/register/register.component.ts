@@ -6,13 +6,13 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-    loginForm!: UntypedFormGroup;
+    registerForm!: UntypedFormGroup;
     loading!: boolean;
 
     constructor(private router: Router,
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Chien-Neymar - Login');
+        this.titleService.setTitle('Chien-Neymar - Register');
         this.authenticationService.logout();
         this.createForm();
     }
@@ -30,17 +30,19 @@ export class LoginComponent implements OnInit {
     private createForm() {
         const savedUserEmail = localStorage.getItem('savedUserEmail');
 
-        this.loginForm = new UntypedFormGroup({
+        this.registerForm = new UntypedFormGroup({
+            name: new UntypedFormControl('', Validators.required),
             email: new UntypedFormControl(savedUserEmail, [Validators.required, Validators.email]),
             password: new UntypedFormControl('', Validators.required),
             rememberMe: new UntypedFormControl(savedUserEmail !== null)
         });
     }
 
-    login() {
-        const email = this.loginForm.get('email')?.value;
-        const password = this.loginForm.get('password')?.value;
-        const rememberMe = this.loginForm.get('rememberMe')?.value;
+    register() {
+        const name = this.registerForm.get('name')?.value;
+        const email = this.registerForm.get('email')?.value;
+        const password = this.registerForm.get('password')?.value;
+        const rememberMe = this.registerForm.get('rememberMe')?.value;
 
         this.loading = true;
         this.authenticationService
@@ -61,7 +63,7 @@ export class LoginComponent implements OnInit {
             );
     }
 
-    resetPassword() {
-        this.router.navigate(['/auth/password-reset-request']);
+    login() {
+        this.router.navigate(['/auth/login']);
     }
 }

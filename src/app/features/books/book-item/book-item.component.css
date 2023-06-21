@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+  }
+  
+  :host a {
+    display: flex;
+  }
+  
+  .book-card {
+    margin-bottom: 4px;
+  }

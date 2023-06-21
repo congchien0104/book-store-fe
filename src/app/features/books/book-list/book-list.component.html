@@ -1,0 +1,55 @@
+<!-- <div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+  
+      <mat-card>
+        <mat-card-content>
+          <h2>Books</h2>
+  
+  
+          <div class="container" fxLayout="row" fxLayoutAlign="center none">
+            <div fxFlex="50%" class="text-center no-records animate">
+              <mat-icon>people_outline</mat-icon>
+              <p>No Books exist.</p>
+            </div>
+            <mat-icon> </mat-icon>
+          </div>
+  
+        </mat-card-content>
+      </mat-card>
+  
+    </div>
+  </div> -->
+
+  <div class="container" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="row">
+
+        <mat-nav-list>
+            <mat-list-item *ngFor="let book of books">
+              <img matListItemAvatar src="{{book.image}}" alt="IMG">
+              <h3 matListItemTitle>
+                {{book.title}}
+              </h3>
+              <p matListItemLine>
+                <span>100000</span>
+                <span> Neymar </span>
+              </p>
+              <div matListItemMeta>
+                <button mat-button color="primary">
+                  View
+                </button>
+                <button mat-button color="accent">
+                  Delete
+                </button>
+              </div>
+            </mat-list-item>
+          </mat-nav-list>
+
+        <!-- <app-book-item
+            *ngFor="let book of books"
+            class="last"
+            [book]="book"
+        >
+        </app-book-item> -->
+        
+    </div>
+  </div>
