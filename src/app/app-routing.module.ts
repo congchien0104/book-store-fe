@@ -9,44 +9,9 @@ const appRoutes: Routes = [
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'books',
     loadChildren: () => import('./features/books/books.module').then(m => m.BooksModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'customers',
-    loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'users',
-    loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'account',
-    loadChildren: () => import('./features/account/account.module').then(m => m.AccountModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'icons',
-    loadChildren: () => import('./features/icons/icons.module').then(m => m.IconsModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'typography',
-    loadChildren: () => import('./features/typography/typography.module').then(m => m.TypographyModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'about',
-    loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: '**',

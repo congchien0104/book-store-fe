@@ -1,0 +1,64 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+
+    <div fxFlex="95%">
+  
+      <mat-card>
+        <mat-card-content>
+          <h2>Add Book</h2>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+  
+            <div fxFlex="60%" fxFlex.sm="95%" fxFlex.xs="95%">
+                <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+                    <p>Use the form below to add book.</p>
+                  
+                    <div fxLayout="row">
+                  
+                      <div fxFlex="40%" fxFlex.md="60%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Title" formControlName="title">
+                          <mat-error>
+                            Please enter a your title
+                          </mat-error>
+                        </mat-form-field>
+                  
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Image" formControlName="image">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Category</mat-label>
+                            <mat-select formControlName="category">
+                                <mat-option value="one">Football</mat-option>
+                                <mat-option value="two">Badminton</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Price" type="number" formControlName="price">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Quantity" type="number" formControlName="quantity">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                        </mat-form-field>
+                  
+                  
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!bookForm.valid">Save</button>
+                  
+                      </div>
+                  
+                    </div>
+                  
+                </form>
+            </div>
+  
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

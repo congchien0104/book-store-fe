@@ -1,11 +1,12 @@
-/* .container {
-    padding: 8px;
-  }
-  
-  .first {
-    background: blue;
-  }
-  
-  .last {
-    background: orange;
-  } */
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}

@@ -1,55 +1,66 @@
-<!-- <div class="container" fxLayout="row" fxLayoutAlign="center none">
-    <div fxFlex="95%">
-  
-      <mat-card>
-        <mat-card-content>
-          <h2>Books</h2>
-  
-  
-          <div class="container" fxLayout="row" fxLayoutAlign="center none">
-            <div fxFlex="50%" class="text-center no-records animate">
-              <mat-icon>people_outline</mat-icon>
-              <p>No Books exist.</p>
-            </div>
-            <mat-icon> </mat-icon>
-          </div>
-  
-        </mat-card-content>
-      </mat-card>
-  
-    </div>
-  </div> -->
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
 
-  <div class="container" fxLayout="row" fxLayoutAlign="space-around center">
-    <div fxFlex="row">
+    <mat-card>
+      <mat-card-content>
+        <h2>Books Management</h2>
+        <button mat-flat-button color="accent" (click)="addBook()">Add book</button>
 
-        <mat-nav-list>
-            <mat-list-item *ngFor="let book of books">
-              <img matListItemAvatar src="{{book.image}}" alt="IMG">
-              <h3 matListItemTitle>
-                {{book.title}}
-              </h3>
-              <p matListItemLine>
-                <span>100000</span>
-                <span> Neymar </span>
-              </p>
-              <div matListItemMeta>
-                <button mat-button color="primary">
-                  View
-                </button>
-                <button mat-button color="accent">
-                  Delete
-                </button>
-              </div>
-            </mat-list-item>
-          </mat-nav-list>
+        <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- <app-book-item
-            *ngFor="let book of books"
-            class="last"
-            [book]="book"
-        >
-        </app-book-item> -->
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
         
-    </div>
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+          </ng-container>
+        
+          <!-- Image Column -->
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+            <td mat-cell *matCellDef="let element"> <img class="image" matListItemAvatar src="{{element.image}}" alt="IMG"> </td>
+          </ng-container>
+
+          <!-- Category Column -->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+          </ng-container>
+        
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+          </ng-container>
+
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+          </ng-container>
+
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-stroked-button color="primary" (click)="bookDetails()">Details</button>
+              <button mat-stroked-button color="warn">Delete</button>
+            </td>
+          </ng-container>
+
+          
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+      </mat-card-content>
+    </mat-card>
+
   </div>
+</div>

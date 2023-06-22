@@ -32,36 +32,25 @@ export class LoginComponent implements OnInit {
 
         this.loginForm = new UntypedFormGroup({
             email: new UntypedFormControl(savedUserEmail, [Validators.required, Validators.email]),
-            password: new UntypedFormControl('', Validators.required),
-            rememberMe: new UntypedFormControl(savedUserEmail !== null)
+            password: new UntypedFormControl('', Validators.required)
         });
     }
 
     login() {
         const email = this.loginForm.get('email')?.value;
         const password = this.loginForm.get('password')?.value;
-        const rememberMe = this.loginForm.get('rememberMe')?.value;
 
         this.loading = true;
-        this.authenticationService
-            .login(email.toLowerCase(), password)
-            .subscribe(
-                data => {
-                    if (rememberMe) {
-                        localStorage.setItem('savedUserEmail', email);
-                    } else {
-                        localStorage.removeItem('savedUserEmail');
-                    }
-                    this.router.navigate(['/']);
-                },
-                error => {
-                    this.notificationService.openSnackBar(error.error);
-                    this.loading = false;
-                }
-            );
+        this.authenticationService.login(email.toLowerCase(), password)
+            .subscribe({ next: data => {
+                localStorage.setItem('tokens', JSON.stringify(data.tokens));
+                localStorage.setItem('user', JSON.stringify(data.user));
+                this.router.navigate(['/']);
+            }
+        });
     }
 
-    resetPassword() {
-        this.router.navigate(['/auth/password-reset-request']);
+    register() {
+        this.router.navigate(['/auth/register']);
     }
 }

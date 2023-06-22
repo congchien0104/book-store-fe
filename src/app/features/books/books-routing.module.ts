@@ -4,6 +4,7 @@ import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,13 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'book-details', component: BookDetailsComponent },
+    ]
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'add-book', component: AddBookComponent },
     ]
   }
 ];

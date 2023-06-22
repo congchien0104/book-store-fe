@@ -7,7 +7,8 @@ const fakeData: Book = {
     title: 'Hydrogen', 
     image: 'https://www.planetsport.com/image-library/square/500/b/brazil-neymar-celebrates-extra-time-goal-croatia-world-cup-dec22.jpg', 
     category: 'Neymar', 
-    price: 100000 
+    price: 100000,
+    quantity: 11
 }
 
 @Component({

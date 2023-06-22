@@ -28,13 +28,11 @@ export class RegisterComponent implements OnInit {
     }
 
     private createForm() {
-        const savedUserEmail = localStorage.getItem('savedUserEmail');
 
         this.registerForm = new UntypedFormGroup({
             name: new UntypedFormControl('', Validators.required),
-            email: new UntypedFormControl(savedUserEmail, [Validators.required, Validators.email]),
+            email: new UntypedFormControl('', [Validators.required, Validators.email]),
             password: new UntypedFormControl('', Validators.required),
-            rememberMe: new UntypedFormControl(savedUserEmail !== null)
         });
     }
 
@@ -42,19 +40,14 @@ export class RegisterComponent implements OnInit {
         const name = this.registerForm.get('name')?.value;
         const email = this.registerForm.get('email')?.value;
         const password = this.registerForm.get('password')?.value;
-        const rememberMe = this.registerForm.get('rememberMe')?.value;
+        //const rememberMe = this.registerForm.get('rememberMe')?.value;
 
         this.loading = true;
         this.authenticationService
-            .login(email.toLowerCase(), password)
+            .register(name, email.toLowerCase(), password)
             .subscribe(
                 data => {
-                    if (rememberMe) {
-                        localStorage.setItem('savedUserEmail', email);
-                    } else {
-                        localStorage.removeItem('savedUserEmail');
-                    }
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/auth/login']);
                 },
                 error => {
                     this.notificationService.openSnackBar(error.error);

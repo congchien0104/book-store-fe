@@ -6,6 +6,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BookItemComponent } from './book-item/book-item.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     SharedModule,
     BooksRoutingModule
   ],
-  declarations: [BookListComponent, BookItemComponent, BookDetailsComponent]
+  declarations: [BookListComponent, BookItemComponent, BookDetailsComponent, AddBookComponent]
 })
 export class BooksModule { }
