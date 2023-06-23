@@ -5,7 +5,6 @@ import { Book } from 'src/app/core/models/book.model';
 @Component({
     selector: '<app-home-page>',
     templateUrl: './home-page.component.html',
-    styleUrls: [],
 })
 export class HomePageComponent implements OnInit {
     books?: Book[];

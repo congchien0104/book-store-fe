@@ -13,6 +13,6 @@ import { HomePageComponent } from '../customer-site/home-page/home-page.componen
     SharedModule,
     AuthRoutingModule
   ],
-  declarations: [LoginComponent, RegisterComponent, HomePageComponent]
+  declarations: [LoginComponent, RegisterComponent]
 })
 export class AuthModule { }
