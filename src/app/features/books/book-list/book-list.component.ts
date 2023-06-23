@@ -53,10 +53,10 @@ export class BookListComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('book-list');
-    this.logger.log('Customers loaded');
-    this.notificationService.openSnackBar('Customers loaded');
-    this.dataSource.sort = this.sort;
+    this.logger.log('Books loaded');
+    this.notificationService.openSnackBar('Books loaded');
     this.retrieveBooks();
+    this.dataSource.sort = this.sort;
   }
 
   bookDetails(id: string) {
