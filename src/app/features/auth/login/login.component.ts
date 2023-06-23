@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Chien-Neymar - Login');
+        this.titleService.setTitle('Login');
         this.authenticationService.logout();
         this.createForm();
     }
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
             .subscribe({ next: data => {
                 localStorage.setItem('tokens', JSON.stringify(data.tokens));
                 localStorage.setItem('user', JSON.stringify(data.user));
-                this.router.navigate(['/']);
+                this.router.navigate(['/books']);
             }
         });
     }

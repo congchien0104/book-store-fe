@@ -11,7 +11,7 @@
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
           </ng-container>
         
           <!-- Title Column -->
@@ -29,7 +29,7 @@
           <!-- Category Column -->
           <ng-container matColumnDef="category">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
-            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.categoryId}} </td>
           </ng-container>
         
           <!-- Price Column -->
@@ -48,8 +48,8 @@
           <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
             <td mat-cell *matCellDef="let element">
-              <button mat-stroked-button color="primary" (click)="bookDetails()">Details</button>
-              <button mat-stroked-button color="warn">Delete</button>
+              <button mat-stroked-button color="primary" (click)="bookDetails(element.id)">Details</button>
+              <button mat-stroked-button color="warn" (click)="removeBook(element.id)">Delete</button>
             </td>
           </ng-container>
 
@@ -62,5 +62,17 @@
       </mat-card-content>
     </mat-card>
 
+    <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="totalResults"
+               [pageSize]="limit"
+               [pageIndex]="page -1"
+               aria-label="Select page">
+    </mat-paginator>
+
   </div>
+
+  
+
 </div>

@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { Book } from 'src/app/core/models/book.model';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { BookService } from 'src/app/core/services/book.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 const ELEMENT_DATA: Book[] = [
     { id: '1', title: 'Hydrogen', image: 'https://www.planetsport.com/image-library/square/500/b/brazil-neymar-celebrates-extra-time-goal-croatia-world-cup-dec22.jpg', categoryId: 'Neymar', price: 100000, quantity: 11, description: 'ok' },
@@ -31,11 +32,16 @@ const ELEMENT_DATA: Book[] = [
 export class BookListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'image', 'category','price', 'quantity', 'details'];
 
-  books?: Book[];
   dataSource = new MatTableDataSource([]);
+  books?: Book[];
+  limit: number;
+  page: number;
+  totalPages: number;
+  totalResults: number;
 
   @ViewChild(MatSort, { static: true })
   sort: MatSort = new MatSort;
+  @ViewChild('paginator') paginator: MatPaginator;
 
   constructor(
     private router: Router,
@@ -46,15 +52,15 @@ export class BookListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('angular-material-template - Customers');
+    this.titleService.setTitle('book-list');
     this.logger.log('Customers loaded');
     this.notificationService.openSnackBar('Customers loaded');
     this.dataSource.sort = this.sort;
     this.retrieveBooks();
   }
 
-  bookDetails() {
-    this.router.navigate(['/books/book-details']);
+  bookDetails(id: string) {
+    this.router.navigate([`/books/book-details/${id}`]);
   }
 
   addBook() {
@@ -62,19 +68,41 @@ export class BookListComponent implements OnInit {
   }
 
   retrieveBooks (): void {
-    this.bookService.getBooks().subscribe({
+    const page = this.page || 1;
+    this.bookService.getBooks(page).subscribe({
       next: data => {
         console.log(data);
         this.dataSource = new MatTableDataSource(data.results);
         this.books = data.results;
-        console.log(this.books);
+        this.limit = data.limit;
+        this.page = data.page;
+        this.totalPages = data.totalPages;
+        this.totalResults = data.totalResults;
+        console.log(this.totalPages);
       }
     })
   }
 
-  removeBook (): void {
-    this.bookService.deleteBook('123').subscribe();
+  removeBook (id: string): void {
+    this.bookService.deleteBook(id).subscribe({
+      next: data => {
+        this.notificationService.openSnackBar('delete book successfully');
+        this.refreshBookList();
+      }
+    });
   }
+
+  refreshBookList ():void {
+    this.retrieveBooks();
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.retrieveBooks();
+    console.log("page: ", event.pageIndex);
+    console.log(event.pageSize);
+  }
+
 }
 
 

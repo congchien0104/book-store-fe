@@ -42,9 +42,11 @@ export class AuthenticationService {
         this.localStorage.clear();
     }
 
-    getCurrentUser(): any {
+    getCurrentUser() {
         // TODO: Enable after implementation
-        // return JSON.parse(this.localStorage.getItem('currentUser'));
+        const user: any = this.localStorage.getItem('user');
+        //console.log('current user: ', JSON.parse(user));
+        //return JSON.parse(user);
         return {
             token: 'aisdnaksjdn,axmnczm',
             isAdmin: true,
@@ -52,7 +54,13 @@ export class AuthenticationService {
             id: '12312323232',
             alias: 'john.doe@gmail.com'.split('@')[0],
             expiration: moment().add(1, 'days').toDate(),
-            fullName: 'John Doe'
+            fullName: 'Chien Neymar'
         };
+    }
+
+    getTokens() {
+        const tokens: any = this.localStorage.getItem('tokens');
+        console.log('current tokens: ', JSON.parse(tokens));
+        return JSON.parse(tokens);
     }
 }

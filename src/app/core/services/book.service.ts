@@ -19,8 +19,12 @@ export class BookService {
         return this.http.post('http://localhost:8080/books', params, httpOptions);
     }
 
-    getBooks (): Observable<any>{
-        return this.http.get('http://localhost:8080/books', httpOptions);
+    getBooks (page: number): Observable<any>{
+        return this.http.get(`http://localhost:8080/books?page=${page}`, httpOptions);
+    }
+
+    getBook (id: string): Observable<any> {
+        return this.http.get(`http://localhost:8080/books/${id}`, httpOptions);
     }
 
     deleteBook (id: string) {
