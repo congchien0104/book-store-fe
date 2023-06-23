@@ -8,11 +8,6 @@ const appRoutes: Routes = [
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule),
   },
-  // {
-  //   path: 'home',
-  //   loadChildren: () => import('./features/customer-site/customer-site.module').then(m => m.CustomerSiteModule),
-  //   //canActivate: [AuthGuard]
-  // },
   {
     path: 'books',
     loadChildren: () => import('./features/books/books.module').then(m => m.BooksModule),

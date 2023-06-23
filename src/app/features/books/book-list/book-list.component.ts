@@ -45,16 +45,16 @@ export class BookListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private logger: NGXLogger,
-    private notificationService: NotificationService,
+    //private logger: NGXLogger,
+    //private notificationService: NotificationService,
     private titleService: Title,
     private bookService: BookService
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('book-list');
-    this.logger.log('Books loaded');
-    this.notificationService.openSnackBar('Books loaded');
+    //.logger.log('Books loaded');
+    //this.notificationService.openSnackBar('Books loaded');
     this.retrieveBooks();
     this.dataSource.sort = this.sort;
   }
@@ -86,7 +86,7 @@ export class BookListComponent implements OnInit {
   removeBook (id: string): void {
     this.bookService.deleteBook(id).subscribe({
       next: data => {
-        this.notificationService.openSnackBar('delete book successfully');
+        //this.notificationService.openSnackBar('delete book successfully');
         this.refreshBookList();
       }
     });

@@ -1,3 +1,28 @@
-<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
-    <h1>Home Page</h1>
+<div class="container" fxLayoutAlign="center center">
+    <h1>Book Store</h1>
+
+    <div *ngFor="let book of books">
+        <p>{{book.title}}</p>
+        <a [routerLink]="['/book', book.id]" style="text-decoration: none;">
+            <mat-card appearance="outlined" class="book-card">
+              <mat-card-header>
+                <mat-card-title-group>
+                  <img mat-card-sm-image *ngIf="book.image" [src]="book.image" />
+                  <mat-card-title>{{ book.title }}</mat-card-title>
+                  <mat-card-subtitle *ngIf="book.categoryId">
+                    Author:
+                  </mat-card-subtitle>
+                </mat-card-title-group>
+              </mat-card-header>
+          
+              <mat-card-content >
+                <p *ngIf="book.price">
+                  {{ book.price | currency }}
+                </p>
+              </mat-card-content>
+            </mat-card>
+        </a>
+        
+    </div>
+
 </div>
