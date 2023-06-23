@@ -4,8 +4,8 @@
         <mat-card-title-group>
           <img mat-card-sm-image *ngIf="book.image" [src]="book.image" />
           <mat-card-title>{{ book.title }}</mat-card-title>
-          <mat-card-subtitle *ngIf="book.category">
-            {{ book.category }}. Author:
+          <mat-card-subtitle *ngIf="book.categoryId">
+            Author:
           </mat-card-subtitle>
         </mat-card-title-group>
       </mat-card-header>
