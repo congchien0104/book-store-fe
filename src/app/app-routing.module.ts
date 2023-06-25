@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'books',
     pathMatch: 'full'
   }
 ];

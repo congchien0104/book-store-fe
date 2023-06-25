@@ -1,4 +1,5 @@
-<mat-toolbar color="primary"> Book Store </mat-toolbar>
+<mat-toolbar color="primary"> Book Store
+</mat-toolbar>
 
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
@@ -20,8 +21,8 @@
           <p>{{ book.price | currency }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="accent">Details</button>
-          <button mat-raised-button color="primary">Add To Cart</button>
+          <button mat-raised-button color="accent" (click)="bookDetails(book.id)">Details</button>
+          <button mat-raised-button color="primary" (click)="addToCart(book)">Add To Cart</button>
         </mat-card-actions>
       </mat-card>
     </div>

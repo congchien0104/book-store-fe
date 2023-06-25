@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
-import { async } from '@angular/core/testing';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
 

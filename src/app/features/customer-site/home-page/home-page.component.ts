@@ -1,6 +1,8 @@
+import { CartService } from './../../../core/services/cart.service';
 import { BookService } from 'src/app/core/services/book.service';
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/core/models/book.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: '<app-home-page>',
@@ -9,7 +11,9 @@ import { Book } from 'src/app/core/models/book.model';
 export class HomePageComponent implements OnInit {
     books?: Book[];
 
-    constructor(private bookService: BookService) {}
+    constructor(private router: Router,
+      private bookService: BookService,
+      private cartService: CartService) {}
 
     ngOnInit(): void {
         this.retrieveBooks();
@@ -24,5 +28,14 @@ export class HomePageComponent implements OnInit {
             console.log(this.books);
           }
         })
-      }
+    }
+
+    bookDetails(id: string) {
+      this.router.navigate([`/books/book-details/${id}`]);
+    }
+
+    addToCart(book: Book) {
+      this.cartService.addToCart(book);
+    }
+  
 }
