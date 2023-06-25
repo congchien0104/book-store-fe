@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { PasswordValidators } from 'src/app/shared/validators/passwordValidators';
 
 @Component({
     selector: 'app-login',
@@ -30,7 +31,20 @@ export class LoginComponent implements OnInit {
 
         this.loginForm = new UntypedFormGroup({
             email: new UntypedFormControl(savedUserEmail, [Validators.required, Validators.email]),
-            password: new UntypedFormControl('', Validators.required)
+            password: new UntypedFormControl('', [Validators.required,
+                PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+                    requiresDigit: true
+                }),
+                PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+                requiresUppercase: true
+                }),
+                PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+                requiresLowercase: true
+                }),
+                PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+                requiresSpecialChars: true
+                })
+            ])
         });
     }
 
