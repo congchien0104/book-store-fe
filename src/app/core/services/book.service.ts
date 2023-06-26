@@ -26,7 +26,7 @@ export class BookService {
         return this.http.get(`http://localhost:8080/books/${id}`, httpOptions);
     }
 
-    deleteBook (id: string) {
+    deleteBook (id: string): Observable<any> {
         return this.http.delete(`http://localhost:8080/books/${id}`, httpOptions);
     }
 }
