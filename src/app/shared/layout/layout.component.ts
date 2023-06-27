@@ -17,7 +17,9 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     private _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
     showSpinner: boolean = false;
-    userName: string = "";
+    // userName: string = "";
+    // isAdmin: boolean = false;
+    name: string = '';
     isAdmin: boolean = false;
 
     private autoLogoutSubscription: Subscription = new Subscription;
@@ -37,14 +39,14 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     ngOnInit(): void {
         const user = this.authService.getCurrentUser();
 
-        this.isAdmin = user.isAdmin;
-        this.userName = user.fullName;
+        this.isAdmin = user.role === 'user' ? true : false;
+        this.name = user.name;
 
         // Auto log-out subscription
-        const timer$ = timer(2000, 5000);
-        this.autoLogoutSubscription = timer$.subscribe(() => {
-            this.authGuard.canActivate();
-        });
+        // const timer$ = timer(2000, 5000);
+        // this.autoLogoutSubscription = timer$.subscribe(() => {
+        //     this.authGuard.canActivate();
+        // });
     }
 
     ngOnDestroy(): void {

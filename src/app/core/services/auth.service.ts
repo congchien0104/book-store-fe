@@ -45,17 +45,17 @@ export class AuthenticationService {
     getCurrentUser() {
         // TODO: Enable after implementation
         const user: any = this.localStorage.getItem('user');
-        //console.log('current user: ', JSON.parse(user));
-        //return JSON.parse(user);
-        return {
-            token: 'aisdnaksjdn,axmnczm',
-            isAdmin: true,
-            email: 'john.doe@gmail.com',
-            id: '12312323232',
-            alias: 'john.doe@gmail.com'.split('@')[0],
-            expiration: moment().add(1, 'days').toDate(),
-            fullName: 'Chien Neymar'
-        };
+        console.log('current user: ', JSON.parse(user));
+        return JSON.parse(user);
+        // return {
+        //     token: 'aisdnaksjdn,axmnczm',
+        //     isAdmin: true,
+        //     email: 'john.doe@gmail.com',
+        //     id: '12312323232',
+        //     alias: 'john.doe@gmail.com'.split('@')[0],
+        //     expiration: moment().add(1, 'days').toDate(),
+        //     fullName: 'Chien Neymar'
+        // };
     }
 
     getTokens() {

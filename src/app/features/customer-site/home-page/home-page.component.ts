@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit {
     }
 
     retrieveBooks (): void {
-        this.bookService.getBooks(0).subscribe({
+        this.bookService.getBooks(1).subscribe({
           next: data => {
             console.log(data);
             //this.dataSource = new MatTableDataSource(data.results);

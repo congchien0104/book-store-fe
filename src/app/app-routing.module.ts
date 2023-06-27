@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   {
     path: 'books',
     loadChildren: () => import('./features/books/books.module').then(m => m.BooksModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: '**',

@@ -4,7 +4,7 @@
     <mat-card>
       <mat-card-content>
         <h2>Books Management</h2>
-        <button mat-flat-button color="primary">Total Books: {{ totalResults }}</button>
+        <button class="btn" mat-flat-button color="primary">Total: {{ totalResults }}</button>
         <button mat-flat-button color="accent" (click)="addBook()">Add book</button>
 
         <table mat-table [dataSource]="dataSource" matSort>
@@ -49,7 +49,7 @@
           <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
             <td mat-cell *matCellDef="let element">
-              <button mat-flat-button color="primary" (click)="bookDetails(element.id)">Details</button>
+              <button class="btn" mat-flat-button color="primary" (click)="bookDetails(element.id)">Details</button>
               <button mat-flat-button color="warn" (click)="removeBook(element.id)">Delete</button>
             </td>
           </ng-container>

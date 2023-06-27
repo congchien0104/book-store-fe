@@ -15,7 +15,8 @@
         </mat-card-header>
         <img
           mat-card-image
-          src="https://www.planetsport.com/image-library/square/500/b/brazil-neymar-celebrates-extra-time-goal-croatia-world-cup-dec22.jpg"
+          [src]="book.image"
+          alt="IMG"
         />
         <mat-card-content>
           <p>{{ book.price | currency }}</p>
