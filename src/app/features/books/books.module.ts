@@ -12,7 +12,7 @@ import { AddBookComponent } from './add-book/add-book.component';
   imports: [
     CommonModule,
     SharedModule,
-    BooksRoutingModule
+    BooksRoutingModule,
   ],
   declarations: [BookListComponent, BookItemComponent, BookDetailsComponent, AddBookComponent]
 })
