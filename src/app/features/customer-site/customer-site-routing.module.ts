@@ -6,9 +6,17 @@ import { MainLayoutComponent } from '../../shared/main-layout/main-layout.compon
 
 const routes: Routes = [
   { path: '', 
-    component: HomePageComponent,
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: HomePageComponent },
+    ]
   },
-  { path: 'cart', component: CartComponent }
+  { path: '', 
+    component: MainLayoutComponent,
+    children: [
+      { path: 'cart', component: CartComponent },
+    ]
+  },
 ];
 
 @NgModule({

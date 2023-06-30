@@ -9,7 +9,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: 'customer',
+    path: '',
     loadChildren: () => import('./features/customer-site/customer-site.module').then(m => m.CustomerSiteModule),
     //canActivate: [AuthGuard]
   },
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'books',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];

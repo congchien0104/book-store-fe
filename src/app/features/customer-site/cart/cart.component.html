@@ -1,12 +1,12 @@
-<mat-toolbar color="primary"> Book Store </mat-toolbar>
+<!-- <mat-toolbar color="primary"> Book Store </mat-toolbar> -->
 
-<div class="container" fxLayout="row" fxLayoutAlign="center center">
-  <div fxLayout="row">
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="50%">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
         </ng-container>
       
         <ng-container matColumnDef="title">
@@ -38,10 +38,11 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+  <!-- <div fxLayout="50%">
+    <p>Total: {{ getTotal() | currency:'USD' }}</p>
+  </div> -->
       
 </div>
-<div fxLayout="row">
-  <p>Total: {{ getTotal() | currency:'USD' }}</p>
-</div>
+
 
 <!-- <div *ngIf="items.length === 0"> Your cart is empty</div> -->

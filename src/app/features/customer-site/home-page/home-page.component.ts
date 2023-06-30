@@ -31,11 +31,12 @@ export class HomePageComponent implements OnInit {
     }
 
     bookDetails(id: string) {
-      this.router.navigate([`/books/book-details/${id}`]);
+      this.router.navigate([`/customer/b/cart`]);
     }
 
     addToCart(book: Book) {
       this.cartService.addToCart(book);
+      this.router.navigate([`/customer/cart`]);
     }
   
 }
