@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: '<app-home-page>',
     templateUrl: './home-page.component.html',
+    styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
     books?: Book[];
@@ -36,7 +37,7 @@ export class HomePageComponent implements OnInit {
 
     addToCart(book: Book) {
       this.cartService.addToCart(book);
-      this.router.navigate([`/customer/cart`]);
+      this.router.navigate([`/cart`]);
     }
   
 }

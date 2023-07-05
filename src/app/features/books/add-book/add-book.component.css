@@ -6,7 +6,11 @@
 }
 
 .image {
-    width: 200px;
-    height: 200px;
-  }
+    width: 250px;
+    height: 300px;
+    margin: 25px;
+    align-content: center;
+}
+
+
   

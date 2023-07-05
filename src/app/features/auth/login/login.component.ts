@@ -55,9 +55,14 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(email.toLowerCase(), password)
             .subscribe({ next: data => {
+                
                 localStorage.setItem('tokens', JSON.stringify(data.tokens));
                 localStorage.setItem('user', JSON.stringify(data.user));
-                this.router.navigate(['/books']);
+                if(data.user && data.user.role === 'admin') {
+                    this.router.navigate(['/books']);
+                } else {
+                    this.router.navigate(['/'])
+                }
             }
         });
     }

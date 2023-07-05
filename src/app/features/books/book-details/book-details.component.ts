@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { concatMap, map, switchMap } from 'rxjs';
 import { Book } from 'src/app/core/models/book.model';
 import { BookService } from 'src/app/core/services/book.service';
-
-// const fakeData: Book = { 
-//     id: '1', 
-//     title: 'Hydrogen', 
-//     image: 'https://www.planetsport.com/image-library/square/500/b/brazil-neymar-celebrates-extra-time-goal-croatia-world-cup-dec22.jpg', 
-//     categoryId: 'Neymar', 
-//     price: 100000,
-//     quantity: 11,
-//     description: 'cong chien'
-// }
 
 @Component({
   selector: 'app-book-details',
@@ -21,6 +12,7 @@ import { BookService } from 'src/app/core/services/book.service';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book | undefined;
+  id: string;
     
   constructor(private titleService: Title,
               private route: ActivatedRoute,
@@ -32,13 +24,27 @@ export class BookDetailsComponent implements OnInit {
   }
 
   getBook(): void {
-    const id = String(this.route.snapshot.paramMap.get('id'));
-    this.bookService.getBook(id).subscribe({
-      next: data => {
-        console.log(data)
-        this.book = data;
-      }
+    //const id = String(this.route.paramMap.get('id'));
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   this.id = params.get('id') as string;
+    // });
+
+    this.route.params
+    .pipe(
+      map((param) => param["id"]),
+      concatMap((id) => this.bookService.getBook(id))
+    )
+    .subscribe((response) => {
+      this.book = response;
     });
+    
+
+    // this.bookService.getBook(this.id).subscribe({
+    //   next: data => {
+    //     console.log(data)
+    //     this.book = data;
+    //   }
+    // });
   }
 
 }

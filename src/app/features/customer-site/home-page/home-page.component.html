@@ -1,19 +1,20 @@
 <!-- <mat-toolbar color="primary"> Book Store
 </mat-toolbar> -->
 
-<div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div
-      fxFlex="25%"
+<div class="container" fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="row wrap" fxLayoutGap="20px grid" fxFlexFill>
+    <div class="main-div"
+      fxFlex="20%"
       fxFlex.xs="100%"
       fxFlex.sm="33%"
       *ngFor="let book of books"
     >
-      <mat-card class="mat-elevation-z4">
+      <mat-card class="title_center">
         <mat-card-header>
           <mat-card-title>{{book.title}}</mat-card-title>
         </mat-card-header>
         <img
+          class="image"
           mat-card-image
           [src]="book.image"
           alt="IMG"
@@ -23,7 +24,10 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="accent" (click)="bookDetails(book.id)">Details</button>
-          <button mat-raised-button color="primary" (click)="addToCart(book)">Add To Cart</button>
+          <button class="btn" mat-raised-button color="primary" (click)="addToCart(book)">Buy</button>
+          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

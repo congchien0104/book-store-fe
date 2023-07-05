@@ -64,7 +64,7 @@ export class AddBookComponent implements OnInit {
                 uploadTask.snapshotChanges().pipe(
                 finalize(() => {
                     storageRef.getDownloadURL().subscribe(downloadURL => {
-                        //console.log('ok: ', downloadURL);
+                        console.log('ok: ', downloadURL);
                         this.imageUrl = downloadURL;
                     });
                 })

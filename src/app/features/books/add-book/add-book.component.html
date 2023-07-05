@@ -53,9 +53,16 @@
             </div>
 
             <div fxFlex="60%" fxFlex.sm="95%" fxFlex.xs="95%">
-              <input type="file" (change)="selectFile($event)">
-              <button mat-raised-button color="accent" (click)="upload()">Upload Image</button>
-              <img *ngIf="imageUrl" class="image" src="{{ imageUrl }}" alt="IMG"/>
+              <div>
+                <input type="file" (change)="selectFile($event)">
+                <button mat-raised-button color="accent" (click)="upload()">Upload Image</button>
+              </div>
+              <div>
+                <img *ngIf="imageUrl" class="image" src="{{ imageUrl }}" alt="IMG"/>
+              </div>
+              
+              
+              <!-- <img *ngIf="imageUrl" class="image" src="{{ imageUrl }}" alt="IMG"/> -->
             </div>
   
           </div>

@@ -13,11 +13,15 @@ export class AuthGuard implements CanActivate {
         private authService: AuthenticationService) { }
 
     canActivate() {
-        const user = this.authService.getCurrentUser();
+        //const user = this.authService.getCurrentUser();
+        const tokens = this.authService.getTokens();
+        const { access } = tokens;
+        //console.log('access: ', tokens);
 
-        if (user && user.expiration) {
+        if (tokens && access.token) {
 
-            if (moment() < moment(user.expiration)) {
+            if (moment() < moment(access.expires)) {
+                //console.log('auth guard');
                 return true;
             } else {
                 this.notificationService.openSnackBar('Your session has expired');

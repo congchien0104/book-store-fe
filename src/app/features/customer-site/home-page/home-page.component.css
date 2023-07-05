@@ -1,16 +1,20 @@
-mat-toolbar {
-    justify-content: space-between;
-  }
-  
-.content {
-padding: 16px;
+ 
+.container {
+  margin: 25px;
+  padding-top: 20px;
 }
 
-.content > mat-card {
-margin-bottom: 16px;
+.container > mat-card {
+  margin-bottom: 16px;
+  align-items: center;
 }
 
-.column-label {
-margin-right: 8px;
-font-size: 1rem;
+.title_center {
+  align-items: center;
+}
+
+.main-div{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
