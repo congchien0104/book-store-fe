@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BookItemComponent } from './book-item/book-item.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { AddBookComponent } from './add-book/add-book.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { AddBookComponent } from './add-book/add-book.component';
     SharedModule,
     BooksRoutingModule,
   ],
-  declarations: [BookListComponent, BookItemComponent, BookDetailsComponent, AddBookComponent]
+  declarations: [BookListComponent, BookItemComponent, BookDetailsComponent, AddBookComponent, UpdateBookComponent]
 })
 export class BooksModule { }

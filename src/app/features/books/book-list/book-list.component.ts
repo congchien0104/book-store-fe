@@ -67,6 +67,10 @@ export class BookListComponent implements OnInit {
     this.router.navigate(['/books/add-book']);
   }
 
+  updateBook(id: string) {
+    this.router.navigate([`/books/${id}`]);
+  }
+
   retrieveBooks (): void {
     const page = this.page || 1;
     this.bookService.getBooks(page).subscribe({
